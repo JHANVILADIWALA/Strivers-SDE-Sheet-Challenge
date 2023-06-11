@@ -1,0 +1,24 @@
+https://www.codingninjas.com/codestudio/problems/subset-sum_3843086?topList=striver-sde-sheet-problems&utm_source=striver&utm_medium=website&leftPanelTab=1
+https://practice.geeksforgeeks.org/problems/subset-sums2234/1
+
+#include <bits/stdc++.h> 
+void fn(int ind,int sum,int n,vector<int> &num, vector<int>&ans){
+    if(ind==n){
+        ans.push_back(sum);
+        return;
+    }
+    ////pick left
+    fn(ind+1, sum+num[ind],n,num,ans);
+    
+    ////not pick
+    fn(ind+1, sum,n,num,ans);
+}
+vector<int> subsetSum(vector<int> &num)
+{
+    int n=num.size();
+   vector<int>ans;
+   fn(0,0,n,num,ans);
+   
+   sort(ans.begin(),ans.end());
+   return ans;  
+}
