@@ -1,0 +1,35 @@
+https://www.codingninjas.com/codestudio/problems/1112622?topList=striver-sde-sheet-problems&utm_source=striver&utm_medium=website&leftPanelTab=0
+
+// print unique subsets with given sum
+
+#include<bits/stdc++.h>
+
+void fn(int ind,int target,vector<int> &arr,vector<vector<int>>&ans, vector<int>&curr){
+	if(target==0){
+		ans.push_back(curr);
+		return;
+	}
+	for(int i=ind;i<arr.size();i++){
+		if(arr[i]==arr[i-1] && i>ind)continue; //avoiding duplicate elemets
+		if(arr[i]>target)break;
+		curr.push_back(arr[i]);
+		fn(i+1,target-arr[i],arr,ans,curr);
+		//backtracking also
+		curr.pop_back();
+	}
+}
+vector<vector<int>> combinationSum2(vector<int> &arr, int n, int target)
+{
+	 //we can't make recursive calls for duplicate elements at
+	 //same level bz they will give same sequence
+	 
+	 //sorting so that we can avoid duplicates easily
+	 sort(arr.begin(),arr.end());
+	 vector<vector<int>>ans;
+	 vector<int>curr;
+	 
+	 fn(0,target,arr,ans,curr);
+	 return ans;
+	 
+}
+
