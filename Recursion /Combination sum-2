@@ -3,7 +3,8 @@ https://www.codingninjas.com/codestudio/problems/1112622?topList=striver-sde-she
 // print unique subsets with given sum
 
 #include<bits/stdc++.h>
-
+//TC: O(2^n*k)
+//SC: O(k*x)
 void fn(int ind,int target,vector<int> &arr,vector<vector<int>>&ans, vector<int>&curr){
 	if(target==0){
 		ans.push_back(curr);
