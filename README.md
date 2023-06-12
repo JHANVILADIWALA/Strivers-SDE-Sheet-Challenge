@@ -1,2 +1,3 @@
 Complete DSA solutions of Strivers SDE Sheet
-[# Strivers-SDE-Sheet-Challenge](https://takeuforward.org/interviews/strivers-sde-sheet-top-coding-interview-problems/)
+# Strivers-SDE-Sheet-Challenge
+[Link of Sheet](https://takeuforward.org/interviews/strivers-sde-sheet-top-coding-interview-problems/)
