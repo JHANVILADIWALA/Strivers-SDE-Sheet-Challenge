@@ -1,0 +1,49 @@
+https://www.codingninjas.com/codestudio/problems/1112626?topList=striver-sde-sheet-problems&utm_source=striver&utm_medium=website&leftPanelTab=1
+
+//BRUTE FORCE
+// generate all permutation
+// store in vector
+// sort vector
+// return required index
+//TC: O(N!  *   N)   +   O(N! Log N!)
+//    rec   deepcopy        sorting
+
+//OPTIMISED
+//TC: O(N)  *  O(N)
+//   forloop   eraseAtEachStep
+//SC: O(N)
+
+#include<bits/stdc++.h>
+
+string kthPermutation(int n, int k) {
+    
+      //storing numbers 1 to n in vector
+      //calculating (n-1)!
+      // eg 4!/3! , 3!/2!, etc.
+      int fact=1;
+      vector<int>num;
+      for(int i=1;i<n;i++){
+          fact*=i;
+          num.push_back(i);
+      }
+      num.push_back(n);
+      //num.size()=4
+      
+      //k=17
+      //0 indexed
+      k--; //k=16
+      
+      string ans="";
+      while(true){
+          // 16/6=2 (index)
+          ans += to_string(num[k/fact]); //adding value present at that index
+          num.erase(num.begin()+ k/fact); // erasing this number from vector
+          //num.size()=3
+          if(num.size()==0)break;
+          k=k%fact; //16%6=>4=k
+          fact/=num.size(); // 3!/3
+          
+      }
+          
+      return ans;
+}
