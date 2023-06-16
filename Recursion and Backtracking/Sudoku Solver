@@ -31,7 +31,7 @@ bool isItSudoku(int matrix[9][9]) {
                        matrix[i][j]=k;
 
                        
-                   //if any time found true means its possible
+                   //recursive call
                    if(isItSudoku(matrix))return true;
                    else matrix[i][j]=0; //backtrack
                    }
