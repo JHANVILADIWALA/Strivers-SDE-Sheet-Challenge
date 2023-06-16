@@ -1,0 +1,46 @@
+https://www.codingninjas.com/codestudio/problems/758961?topList=striver-sde-sheet-problems&utm_source=striver&utm_medium=website&leftPanelTab=1
+
+//TC : O(9(n ^ 2))
+//SC : O(1)
+bool isvalid( int row, int col, int elem, int matrix[9][9]){
+    for(int i=0;i<=8;i++){
+        if(matrix[i][col]==elem)return false;
+         if(matrix[row][i]==elem)return false;
+         int r= 3*(row/3) + i/3;
+         int c= 3*(col/3) + i%3;
+          if(matrix[r][c]==elem)return false;
+    }
+    return true;
+}
+
+bool isItSudoku(int matrix[9][9]) {
+    
+    //traversing to matrix
+    for(int i=0;i<9;i++){
+        for(int j=0;j<9;j++){
+
+            //if element found empty
+            if(matrix[i][j]==0){
+
+               //try to put new
+               for(int k=1;k<=9;k++){
+
+                   //check if its valid to put it there
+                   if(isvalid(i,j,k,matrix )){
+                       //put it
+                       matrix[i][j]=k;
+
+                       
+                   //if any time found true means its possible
+                   if(isItSudoku(matrix))return true;
+                   else matrix[i][j]=0; //backtrack
+                   }
+               }
+                //wrong sequence made
+                return false;
+            }
+            
+        }
+    }
+    return true;
+}
