@@ -1,0 +1,22 @@
+https://www.codingninjas.com/codestudio/problems/796002?topList=striver-sde-sheet-problems&utm_source=striver&utm_medium=website&leftPanelTab=0
+
+vector<int> getLevelOrder(BinaryTreeNode<int> *root)
+{
+    //normal bfs
+    
+    vector<int>ans;
+    if(root==NULL)return ans;
+
+    queue< BinaryTreeNode<int> * >q;
+    q.push(root);
+
+    while(!q.empty()){
+        auto it = q.front();
+        q.pop();
+        ans.push_back(it->val);
+        if(it->left!=NULL)q.push(it->left);
+        if(it->right!=NULL)q.push(it->right);
+    }
+     return ans;
+}
+
