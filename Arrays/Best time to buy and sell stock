@@ -1,0 +1,15 @@
+https://www.codingninjas.com/studio/problems/best-time-to-buy-and-sell-stock_6194560?utm_source=striver&utm_medium=website&utm_campaign=a_zcoursetuf&leftPanelTab=0
+
+int bestTimeToBuyAndSellStock(vector<int>&prices) {
+   int n= prices.size();
+         int suff[n];
+         int maxi=INT_MIN;
+         
+        int ans=0;
+         for(int i=n-1; i>=0; i--){
+             maxi = max(maxi, prices[i]);
+             suff[i]=maxi;
+             ans = max(suff[i]-prices[i], ans);
+         }
+        return ans;
+}
